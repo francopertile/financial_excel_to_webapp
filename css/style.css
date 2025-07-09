@@ -1,0 +1,45 @@
+/* css/style.css */
+:root {
+    --pico-font-size: 100%;
+}
+
+body {
+    padding-bottom: 5rem;
+}
+
+header h1 {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+header p {
+    text-align: center;
+    color: var(--pico-muted-color);
+}
+
+article {
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: var(--pico-border-radius);
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05), 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05);
+}
+
+table input[type="number"] {
+    margin-bottom: 0;
+    text-align: right;
+    font-weight: bold;
+}
+
+.result, .result-static {
+    font-weight: bold;
+    text-align: right;
+    vertical-align: middle;
+    background-color: var(--pico-muted-background-color);
+}
+/* css/style.css */
+.chart-container {
+    position: relative;
+    height: 40vh;
+    width: 100%;
+    margin-top: 2rem;
+}

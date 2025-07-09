@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financiera de Proyectos</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="js/financial.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>📊 Calculadora de Evaluación de Proyectos</h1>
+            <p>Una herramienta web interactiva basada en la lógica de su archivo Excel.</p>
+        </header>
+
+        <article>
+            <header>
+                <h2>Proyectos Mutuamente Excluyentes (Pág. 325)</h2>
+                <p>Análisis de proyectos con diferente tamaño de inversión inicial. Modifique los flujos de caja o el costo de capital para ver los resultados actualizados.</p>
+            </header>
+            
+            <section id="p325-calculator">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Proyecto</th>
+                            <th>Año 0</th>
+                            <th>Año 1</th>
+                            <th>Año 2</th>
+                            <th>Año 3</th>
+                            <th>VAN al 10%</th>
+                            <th>TIR</th>
+                            <th>TIRM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>A</strong></td>
+                            <td><input type="number" id="a-y0" value="-100"></td>
+                            <td><input type="number" id="a-y1" value="400"></td>
+                            <td><input type="number" id="a-y2" value="0"></td>
+                            <td><input type="number" id="a-y3" value="0"></td>
+                            <td id="a-van" class="result"></td>
+                            <td id="a-tir" class="result"></td>
+                            <td id="a-tirm" class="result"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>B</strong></td>
+                            <td><input type="number" id="b-y0" value="-200"></td>
+                            <td><input type="number" id="b-y1" value="700"></td>
+                            <td><input type="number" id="b-y2" value="0"></td>
+                            <td><input type="number" id="b-y3" value="0"></td>
+                            <td id="b-van" class="result"></td>
+                            <td id="b-tir" class="result"></td>
+                            <td id="b-tirm" class="result"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>B - A (Incremental)</strong></td>
+                            <td id="ba-y0" class="result-static"></td>
+                            <td id="ba-y1" class="result-static"></td>
+                            <td id="ba-y2" class="result-static"></td>
+                            <td id="ba-y3" class="result-static"></td>
+                            <td id="ba-van" class="result"></td>
+                            <td id="ba-tir" class="result"></td>
+                            <td id="ba-tirm" class="result"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="grid">
+                    <div>
+                        <label for="costo-capital">
+                            Costo de Capital (k)
+                            <input type="number" id="costo-capital" value="0.1" step="0.01">
+                        </label>
+                    </div>
+                    <div></div>
+                </div>
+            </section>
+            
+            <div class="chart-container">
+                <canvas id="p325-van-chart"></canvas>
+            </div>
+
+            <footer>
+                <details>
+                    <summary>Ver fórmulas utilizadas</summary>
+                    <ul>
+                        <li><strong>VAN (Valor Actual Neto):</strong> Se calcula descontando los flujos de caja futuros a la tasa del costo de capital y sumando la inversión inicial (que es negativa).</li>
+                        <li><strong>TIR (Tasa Interna de Retorno):</strong> Es la tasa de descuento que hace que el VAN de un proyecto sea igual a cero. Se calcula con un método iterativo.</li>
+                        <li><strong>TIRM (Tasa Interna de Retorno Modificada):</strong> Modifica la TIR asumiendo que los flujos de caja positivos se reinvierten al costo de capital de la empresa.</li>
+                        <li><strong>TIR Incremental (Tasa de Fisher):</strong> Es la TIR de los flujos de caja diferenciales entre dos proyectos (B - A). Ayuda a decidir entre proyectos mutuamente excluyentes.</li>
+                    </ul>
+                </details>
+            </footer>
+        </article>
+
+        <article>
+            <header>
+                <h2>Proyectos con Diferente Desarrollo Temporal (Pág. 327)</h2>
+                <p>Comparación de proyectos donde uno genera ingresos altos al principio (A) y otro al final (B). El punto donde sus perfiles de VAN se cruzan es la Tasa de Fisher.</p>
+            </header>
+            
+            <section id="p327-calculator">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Proyecto</th>
+                            <th>Año 0</th>
+                            <th>Año 1</th>
+                            <th>Año 2</th>
+                            <th>Año 3</th>
+                            <th>VAN</th>
+                            <th>TIR</th>
+                            <th>TIRM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>A</strong></td>
+                            <td><input type="number" id="p327-a-y0" value="-1000"></td>
+                            <td><input type="number" id="p327-a-y1" value="800"></td>
+                            <td><input type="number" id="p327-a-y2" value="500"></td>
+                            <td><input type="number" id="p327-a-y3" value="100"></td>
+                            <td id="p327-a-van" class="result"></td>
+                            <td id="p327-a-tir" class="result"></td>
+                            <td id="p327-a-tirm" class="result"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>B</strong></td>
+                            <td><input type="number" id="p327-b-y0" value="-1000"></td>
+                            <td><input type="number" id="p327-b-y1" value="100"></td>
+                            <td><input type="number" id="p327-b-y2" value="500"></td>
+                            <td><input type="number" id="p327-b-y3" value="1000"></td>
+                            <td id="p327-b-van" class="result"></td>
+                            <td id="p327-b-tir" class="result"></td>
+                            <td id="p327-b-tirm" class="result"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>B - A (Incremental)</strong></td>
+                            <td id="p327-ba-y0" class="result-static"></td>
+                            <td id="p327-ba-y1" class="result-static"></td>
+                            <td id="p327-ba-y2" class="result-static"></td>
+                            <td id="p327-ba-y3" class="result-static"></td>
+                            <td id="p327-ba-van" class="result"></td>
+                            <td id="p327-ba-tir" class="result"></td>
+                            <td id="p327-ba-tirm" class="result"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <div class="chart-container">
+                <canvas id="p327-van-chart"></canvas>
+            </div>
+            
+            <footer>
+                <h4 style="text-align: center; margin-top: 2rem;">Análisis de Sensibilidad del VAN</h4>
+                <p style="text-align: center; font-size: 0.9em; color: var(--pico-muted-color);">Resultados del VAN para cada proyecto a diferentes costos de capital (k).</p>
+                <table id="p327-sensitivity-table">
+                    <thead>
+                        <tr>
+                            <th>k</th>
+                            <th>VAN Proyecto A</th>
+                            <th>VAN Proyecto B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </footer>
+        </article>
+
+    </main>
+</body>
+</html>
