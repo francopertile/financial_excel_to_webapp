@@ -29,7 +29,6 @@ Este proyecto es una aplicación web estática y no requiere de un servidor back
 
 ## 📂 Estructura del Proyecto
 
-.
 ├── index.html          # Estructura principal de la aplicación.
 
 ├── css/
