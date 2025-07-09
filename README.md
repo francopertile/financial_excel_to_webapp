@@ -31,11 +31,17 @@ Este proyecto es una aplicación web estática y no requiere de un servidor back
 
 .
 ├── index.html          # Estructura principal de la aplicación.
+
 ├── css/
+
 │   └── style.css       # Estilos personalizados para la aplicación.
+
 └── js/
+
 ├── app.js          # Lógica principal de la aplicación, manejo de eventos y actualización de UI.
+
 └── financial.js    # Implementación de las funciones de cálculo financiero (NPV, IRR, MIRR).
+
 
 ## 🤝 Contribuciones
 
