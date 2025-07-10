@@ -6,7 +6,8 @@
 }
 
 body {
-    padding-bottom: 5rem; /* Espacio para los controles globales fijos */
+    /* Ya no necesitamos el padding, la barra será menos intrusiva */
+    padding-bottom: 3rem; 
 }
 
 /* Encabezado principal */
@@ -53,8 +54,6 @@ table input[type="number"] {
     width: 100%;
     margin-top: 2rem;
 }
-
-/* --- NUEVOS ESTILOS --- */
 
 /* Títulos para tablas dentro de un <article> */
 .table-title {
@@ -104,16 +103,23 @@ details[open] > summary {
 }
 
 
+/* === SECCIÓN MODIFICADA === */
 /* Controles globales fijos en la parte inferior */
 .global-controls {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background: var(--pico-card-background-color);
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-    padding: 0.75rem 1rem;
-    border-top: 1px solid var(--pico-border-color);
+    
+    /* Fondo oscuro y opaco, y texto claro */
+    background-color: #333; 
+    color: #fff;
+
+    /* Barra más delgada (menos padding vertical) */
+    padding: 0.4rem 1rem; 
+    
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    border-top: 1px solid #444;
 
     display: flex;
     justify-content: center;
@@ -124,10 +130,18 @@ details[open] > summary {
 
 .global-controls label {
     margin-bottom: 0;
+    color: #f1f1f1; /* Asegurar que la etiqueta sea clara */
 }
 
 .global-controls input,
 .global-controls select {
     margin-bottom: 0;
     max-width: 200px;
+    font-size: 0.9em; /* Texto ligeramente más pequeño */
+    
+    /* Estilos para que el input se vea bien en fondo oscuro */
+    background-color: #555;
+    color: #fff;
+    border-color: #666;
+    padding: 0.25rem 0.5rem; /* Menos padding interno */
 }
