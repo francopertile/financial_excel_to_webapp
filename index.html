@@ -18,7 +18,7 @@
     <main class="container">
         <header>
             <h1>📊 Calculadora de Evaluación de Proyectos</h1>
-            <p>Una herramienta web interactiva basada en la lógica de su archivo Excel.</p>
+            <p>Una herramienta web interactiva para el análisis de inversiones, basada en la lógica de su archivo Excel.</p>
         </header>
 
         <article>
@@ -36,7 +36,7 @@
                             <th>Año 1</th>
                             <th>Año 2</th>
                             <th>Año 3</th>
-                            <th>VAN al 10%</th>
+                            <th>VAN</th>
                             <th>TIR</th>
                             <th>TIRM</th>
                         </tr>
@@ -44,65 +44,43 @@
                     <tbody>
                         <tr>
                             <td><strong>A</strong></td>
-                            <td><input type="number" id="a-y0" value="-100"></td>
-                            <td><input type="number" id="a-y1" value="400"></td>
-                            <td><input type="number" id="a-y2" value="0"></td>
-                            <td><input type="number" id="a-y3" value="0"></td>
-                            <td id="a-van" class="result"></td>
-                            <td id="a-tir" class="result"></td>
-                            <td id="a-tirm" class="result"></td>
+                            <td><input type="number" id="p325-a-y0" value="-100"></td>
+                            <td><input type="number" id="p325-a-y1" value="400"></td>
+                            <td><input type="number" id="p325-a-y2" value="0"></td>
+                            <td><input type="number" id="p325-a-y3" value="0"></td>
+                            <td id="p325-a-van" class="result"></td>
+                            <td id="p325-a-tir" class="result"></td>
+                            <td id="p325-a-tirm" class="result"></td>
                         </tr>
                         <tr>
                             <td><strong>B</strong></td>
-                            <td><input type="number" id="b-y0" value="-200"></td>
-                            <td><input type="number" id="b-y1" value="700"></td>
-                            <td><input type="number" id="b-y2" value="0"></td>
-                            <td><input type="number" id="b-y3" value="0"></td>
-                            <td id="b-van" class="result"></td>
-                            <td id="b-tir" class="result"></td>
-                            <td id="b-tirm" class="result"></td>
+                            <td><input type="number" id="p325-b-y0" value="-200"></td>
+                            <td><input type="number" id="p325-b-y1" value="700"></td>
+                            <td><input type="number" id="p325-b-y2" value="0"></td>
+                            <td><input type="number" id="p325-b-y3" value="0"></td>
+                            <td id="p325-b-van" class="result"></td>
+                            <td id="p325-b-tir" class="result"></td>
+                            <td id="p325-b-tirm" class="result"></td>
                         </tr>
                         <tr>
                             <td><strong>B - A (Incremental)</strong></td>
-                            <td id="ba-y0" class="result-static"></td>
-                            <td id="ba-y1" class="result-static"></td>
-                            <td id="ba-y2" class="result-static"></td>
-                            <td id="ba-y3" class="result-static"></td>
-                            <td id="ba-van" class="result"></td>
-                            <td id="ba-tir" class="result"></td>
-                            <td id="ba-tirm" class="result"></td>
+                            <td id="p325-ba-y0" class="result-static"></td>
+                            <td id="p325-ba-y1" class="result-static"></td>
+                            <td id="p325-ba-y2" class="result-static"></td>
+                            <td id="p325-ba-y3" class="result-static"></td>
+                            <td id="p325-ba-van" class="result"></td>
+                            <td id="p325-ba-tir" class="result"></td>
+                            <td id="p325-ba-tirm" class="result"></td>
                         </tr>
                     </tbody>
                 </table>
-
-                <div class="grid">
-                    <div>
-                        <label for="costo-capital">
-                            Costo de Capital (k)
-                            <input type="number" id="costo-capital" value="0.1" step="0.01">
-                        </label>
-                    </div>
-                    <div></div>
-                </div>
             </section>
             
             <div class="chart-container">
                 <canvas id="p325-van-chart"></canvas>
             </div>
-
-            <footer>
-                <details>
-                    <summary>Ver fórmulas utilizadas</summary>
-                    <ul>
-                        <li><strong>VAN (Valor Actual Neto):</strong> Se calcula descontando los flujos de caja futuros a la tasa del costo de capital y sumando la inversión inicial (que es negativa).</li>
-                        <li><strong>TIR (Tasa Interna de Retorno):</strong> Es la tasa de descuento que hace que el VAN de un proyecto sea igual a cero. Se calcula con un método iterativo.</li>
-                        <li><strong>TIRM (Tasa Interna de Retorno Modificada):</strong> Modifica la TIR asumiendo que los flujos de caja positivos se reinvierten al costo de capital de la empresa.</li>
-                        <li><strong>TIR Incremental (Tasa de Fisher):</strong> Es la TIR de los flujos de caja diferenciales entre dos proyectos (B - A). Ayuda a decidir entre proyectos mutuamente excluyentes.</li>
-                    </ul>
-                </details>
-            </footer>
         </article>
-
+        
         <article>
             <header>
                 <h2>Proyectos con Diferente Desarrollo Temporal (Pág. 327)</h2>
@@ -163,8 +141,7 @@
             </div>
             
             <footer>
-                <h4 style="text-align: center; margin-top: 2rem;">Análisis de Sensibilidad del VAN</h4>
-                <p style="text-align: center; font-size: 0.9em; color: var(--pico-muted-color);">Resultados del VAN para cada proyecto a diferentes costos de capital (k).</p>
+                <h4 class="table-title">Análisis de Sensibilidad del VAN</h4>
                 <table id="p327-sensitivity-table">
                     <thead>
                         <tr>
@@ -178,6 +155,367 @@
                 </table>
             </footer>
         </article>
+
+        <article>
+            <header>
+                <h2>Proyectos con TIR Múltiples o Indeterminada (Pág. 330)</h2>
+                <p>Los flujos de caja no convencionales (múltiples cambios de signo) pueden generar más de una TIR. Utilice el campo "Estimación" para encontrar las diferentes tasas.</p>
+            </header>
+            <section id="p330-calculator">
+                <div class="grid">
+                    <div>
+                        <label for="p330-costo-capital">Costo de Capital (k)</label>
+                        <input type="number" id="p330-costo-capital" value="0.1" step="0.01">
+                    </div>
+                    <div>
+                        <label for="p330-tir-guess">Estimación para TIR</label>
+                        <input type="number" id="p330-tir-guess" value="0.1" step="0.05">
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Proyecto</th>
+                            <th>Año 0</th>
+                            <th>Año 1</th>
+                            <th>Año 2</th>
+                            <th>VAN</th>
+                            <th>TIR (con estimación)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>E</strong></td>
+                            <td><input type="number" id="p330-e-y0" value="-5000"></td>
+                            <td><input type="number" id="p330-e-y1" value="30000"></td>
+                            <td><input type="number" id="p330-e-y2" value="-30000"></td>
+                            <td id="p330-e-van" class="result"></td>
+                            <td id="p330-e-tir" class="result"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>F</strong></td>
+                            <td><input type="number" id="p330-f-y0" value="-7000"></td>
+                            <td><input type="number" id="p330-f-y1" value="17000"></td>
+                            <td><input type="number" id="p330-f-y2" value="-10000"></td>
+                            <td id="p330-f-van" class="result"></td>
+                            <td id="p330-f-tir" class="result"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>G</strong></td>
+                            <td><input type="number" id="p330-g-y0" value="-2000"></td>
+                            <td><input type="number" id="p330-g-y1" value="5000"></td>
+                            <td><input type="number" id="p330-g-y2" value="-5000"></td>
+                            <td id="p330-g-van" class="result"></td>
+                            <td id="p330-g-tir" class="result"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <div class="chart-container">
+                    <canvas id="p330-van-chart"></canvas>
+                </div>
+            </section>
+        </article>
+
+        <article>
+            <header>
+                <h2>Cadena de Reemplazos y Anualidad Equivalente (Pág. 336)</h2>
+                <p>Comparación de proyectos con vidas útiles diferentes (A: 4 años, B: 2 años) mediante el método de cadena de reemplazos y la Anualidad Equivalente (AE).</p>
+            </header>
+            <section id="p336-calculator">
+                 <label for="p336-costo-capital">Costo de Capital (k)</label>
+                 <input type="number" id="p336-costo-capital" value="0.1" step="0.01" style="max-width: 200px; margin-bottom: 1rem;">
+                
+                <h4 class="table-title">Análisis de Proyectos Individuales</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Proyecto</th>
+                            <th>Año 0</th>
+                            <th>Año 1</th>
+                            <th>Año 2</th>
+                            <th>Año 3</th>
+                            <th>Año 4</th>
+                            <th>VAN</th>
+                            <th>TIR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>A (4 años)</strong></td>
+                            <td><input type="number" id="p336-a-y0" value="-40000"></td>
+                            <td><input type="number" id="p336-a-y1" value="8000"></td>
+                            <td><input type="number" id="p336-a-y2" value="14000"></td>
+                            <td><input type="number" id="p336-a-y3" value="15000"></td>
+                            <td><input type="number" id="p336-a-y4" value="17000"></td>
+                            <td id="p336-a-van" class="result"></td>
+                            <td id="p336-a-tir" class="result"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>B (2 años)</strong></td>
+                            <td><input type="number" id="p336-b-y0" value="-20000"></td>
+                            <td><input type="number" id="p336-b-y1" value="10000"></td>
+                            <td><input type="number" id="p336-b-y2" value="15000"></td>
+                            <td class="result-static">-</td>
+                            <td class="result-static">-</td>
+                            <td id="p336-b-van" class="result"></td>
+                            <td id="p336-b-tir" class="result"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h4 class="table-title">Análisis con Vidas Comunes (4 años)</h4>
+                <table>
+                     <thead>
+                        <tr>
+                            <th>Proyecto</th>
+                            <th>Año 0</th>
+                            <th>Año 1</th>
+                            <th>Año 2</th>
+                            <th>Año 3</th>
+                            <th>Año 4</th>
+                            <th>VAN</th>
+                            <th>TIR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr>
+                            <td><strong>B con Reemplazo</strong></td>
+                            <td id="p336-brep-y0" class="result-static"></td>
+                            <td id="p336-brep-y1" class="result-static"></td>
+                            <td id="p336-brep-y2" class="result-static"></td>
+                            <td id="p336-brep-y3" class="result-static"></td>
+                            <td id="p336-brep-y4" class="result-static"></td>
+                            <td id="p336-brep-van" class="result"></td>
+                            <td id="p336-brep-tir" class="result"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4 class="table-title">Criterios de Decisión</h4>
+                <table>
+                     <thead>
+                        <tr>
+                            <th>Criterio</th>
+                            <th>Proyecto A</th>
+                            <th>Proyecto B</th>
+                            <th>Decisión</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Anualidad Equivalente (AE)</strong></td>
+                            <td id="p336-a-ae" class="result"></td>
+                            <td id="p336-b-ae" class="result"></td>
+                            <td id="p336-ae-decision" class="result-static"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>VAN con Vidas Comunes</strong></td>
+                             <td id="p336-a-van-rep" class="result-static"></td>
+                             <td id="p336-brep-van-rep" class="result-static"></td>
+                             <td id="p336-van-decision" class="result-static"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </article>
+
+        <article>
+            <header>
+                <h2>Cálculo de Tarifa con "Solver" (Pág. 343)</h2>
+                <p>Este es un problema de búsqueda de objetivo. La herramienta encontrará la tarifa anual constante que se debe cobrar para que la TIR del proyecto para el concesionario sea exactamente igual a la TIR máxima permitida.</p>
+            </header>
+            <section id="p343-solver">
+                <div class="grid">
+                    <div>
+                        <label>Inversión Inicial</label>
+                        <input type="number" id="p343-inversion" value="-684512">
+                    </div>
+                    <div>
+                        <label>Costo Operación Anual</label>
+                        <input type="number" id="p343-costo-op" value="88979">
+                    </div>
+                    <div>
+                        <label>Años de Concesión</label>
+                        <input type="number" id="p343-anios" value="5" step="1">
+                    </div>
+                </div>
+                <div class="grid">
+                    <div>
+                        <label>Tasa Impuesto Ganancias</label>
+                        <input type="number" id="p343-impuesto" value="0.30" step="0.01">
+                    </div>
+                    <div>
+                        <label>TIR Objetivo</label>
+                        <input type="number" id="p343-tir-objetivo" value="0.127" step="0.001">
+                    </div>
+                </div>
+
+                <button id="p343-calcular-btn">Calcular Tarifa Óptima</button>
+                
+                <h4 class="table-title">Resultado</h4>
+                <p>La tarifa (ingreso anual) que se necesita para alcanzar la TIR objetivo es: <strong id="p343-resultado-tarifa" class="result" style="padding: 0.5rem; border-radius: var(--pico-border-radius);">...</strong></p>
+
+                <h4 class="table-title">Flujo de Caja del Proyecto (con tarifa calculada)</h4>
+                <div class="table-responsive">
+                    <table id="p343-fcf-table">
+                        <thead>
+                            <tr>
+                                <th>Concepto</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+                <p><strong>TIR del Flujo Verificada:</strong> <strong id="p343-tir-verificada" class="result" style="padding: 0.5rem; border-radius: var(--pico-border-radius);">...</strong></p>
+
+            </section>
+        </article>
+
+        <article>
+             <header>
+                <h2>Ejercicios Adicionales</h2>
+                <p>Secciones para los casos de análisis más complejos presentados en el material.</p>
+            </header>
+            
+            <details>
+                <summary><strong>Proyecto con 3 TIR y Tasa de Rentabilidad Compuesta (TRC)</strong></summary>
+                <section id="ej-adic-3tir" style="margin-top: 1rem;">
+                    <p>Análisis de un proyecto con flujos no convencionales que resulta en 3 TIRs. Se introducen tasas de financiamiento y reinversión para calcular la TIRM y la TRC.</p>
+                     <div class="grid">
+                        <div>
+                            <label>Costo de Capital (k)</label>
+                            <input type="number" id="ej-adic-3tir-k" value="0.1" step="0.01">
+                        </div>
+                        <div>
+                            <label>Tasa de Financiamiento</label>
+                            <input type="number" id="ej-adic-3tir-fin" value="0.12" step="0.01">
+                        </div>
+                        <div>
+                            <label>Tasa Libre de Riesgo (Reinversión)</label>
+                            <input type="number" id="ej-adic-3tir-re" value="0.05" step="0.01">
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Año</th>
+                                <th>0</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>6</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Flujo</strong></td>
+                                <td><input type="number" id="ej-adic-3tir-y0" value="-7000"></td>
+                                <td><input type="number" id="ej-adic-3tir-y1" value="15000"></td>
+                                <td><input type="number" id="ej-adic-3tir-y2" value="8000"></td>
+                                <td><input type="number" id="ej-adic-3tir-y3" value="-20000"></td>
+                                <td><input type="number" id="ej-adic-3tir-y4" value="-15000"></td>
+                                <td><input type="number" id="ej-adic-3tir-y5" value="15000"></td>
+                                <td><input type="number" id="ej-adic-3tir-y6" value="5000"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                     <table>
+                        <thead>
+                            <tr>
+                                <th>VAN</th>
+                                <th>TIRM</th>
+                                <th>TIR 1 (Est: 0.1)</th>
+                                <th>TIR 2 (Est: 0.4)</th>
+                                <th>TIR 3 (Est: 0.6)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="ej-adic-3tir-van" class="result"></td>
+                                <td id="ej-adic-3tir-tirm" class="result"></td>
+                                <td id="ej-adic-3tir-tir1" class="result"></td>
+                                <td id="ej-adic-3tir-tir2" class="result"></td>
+                                <td id="ej-adic-3tir-tir3" class="result"></td>
+                            </tr>
+                        </tbody>
+                     </table>
+                     <div class="chart-container">
+                        <canvas id="ej-adic-3tir-chart"></canvas>
+                    </div>
+                </section>
+            </details>
+            
+            <details>
+                <summary><strong>Proyectos con Dos Tasas de Fisher</strong></summary>
+                <section id="ej-adic-fisher" style="margin-top: 1rem;">
+                    <p>Caso en el que el flujo de caja incremental entre dos proyectos es no convencional, generando dos puntos de cruce en los perfiles de VAN (dos tasas de Fisher).</p>
+                    <label>Costo de Capital (k)</label>
+                    <input type="number" id="ej-adic-fisher-k" value="0.1" step="0.01" style="max-width: 200px; margin-bottom: 1rem;">
+                    <table>
+                         <thead>
+                            <tr>
+                                <th>Proyecto</th>
+                                <th>Año 0</th>
+                                <th>Año 1</th>
+                                <th>Año 2</th>
+                                <th>VAN</th>
+                                <th>TIR</th>
+                                <th>TIRM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>A</strong></td>
+                                <td><input type="number" id="ej-adic-fisher-a-y0" value="-350000"></td>
+                                <td><input type="number" id="ej-adic-fisher-a-y1" value="550000"></td>
+                                <td><input type="number" id="ej-adic-fisher-a-y2" value="60000"></td>
+                                <td id="ej-adic-fisher-a-van" class="result"></td>
+                                <td id="ej-adic-fisher-a-tir" class="result"></td>
+                                <td id="ej-adic-fisher-a-tirm" class="result"></td>
+                            </tr>
+                             <tr>
+                                <td><strong>B</strong></td>
+                                <td><input type="number" id="ej-adic-fisher-b-y0" value="-130000"></td>
+                                <td><input type="number" id="ej-adic-fisher-b-y1" value="20000"></td>
+                                <td><input type="number" id="ej-adic-fisher-b-y2" value="375000"></td>
+                                <td id="ej-adic-fisher-b-van" class="result"></td>
+                                <td id="ej-adic-fisher-b-tir" class="result"></td>
+                                <td id="ej-adic-fisher-b-tirm" class="result"></td>
+                            </tr>
+                             <tr>
+                                <td><strong>B - A (Incremental)</strong></td>
+                                <td id="ej-adic-fisher-ba-y0" class="result-static"></td>
+                                <td id="ej-adic-fisher-ba-y1" class="result-static"></td>
+                                <td id="ej-adic-fisher-ba-y2" class="result-static"></td>
+                                <td id="ej-adic-fisher-ba-van" class="result"></td>
+                                <td colspan="2" id="ej-adic-fisher-ba-tir" class="result"></td> </tr>
+                        </tbody>
+                    </table>
+                     <div class="chart-container">
+                        <canvas id="ej-adic-fisher-chart"></canvas>
+                    </div>
+                </section>
+            </details>
+
+        </article>
+
+        <div class="global-controls">
+            <label for="global-costo-capital">
+                Costo de Capital Global (k)
+                <input type="number" id="global-costo-capital" value="0.1" step="0.01" title="Cambia el costo de capital para todas las calculadoras que no tengan uno específico.">
+            </label>
+            <label>
+                Tema
+                <select id="theme-switcher">
+                    <option value="light">Claro</option>
+                    <option value="dark">Oscuro</option>
+                </select>
+            </label>
+        </div>
 
     </main>
 </body>
