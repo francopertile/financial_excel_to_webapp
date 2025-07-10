@@ -5,9 +5,10 @@
     --pico-font-size: 100%;
 }
 
+/* === REGLA #1: EL ESPACIO AL FINAL DE LA PÁGINA === */
+/* Se asegura de que haya espacio para que el contenido suba por encima de la barra fija */
 body {
-    /* Ya no necesitamos el padding, la barra será menos intrusiva */
-    padding-bottom: 3rem; 
+    padding-bottom: 5rem; 
 }
 
 /* Encabezado principal */
@@ -103,19 +104,16 @@ details[open] > summary {
 }
 
 
-/* === SECCIÓN MODIFICADA === */
-/* Controles globales fijos en la parte inferior */
+/* === REGLA #2: EL ESTILO DE LA BARRA FIJA === */
+/* Le da a la barra el aspecto oscuro y delgado */
 .global-controls {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     
-    /* Fondo oscuro y opaco, y texto claro */
     background-color: #333; 
     color: #fff;
-
-    /* Barra más delgada (menos padding vertical) */
     padding: 0.4rem 1rem; 
     
     box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
@@ -130,18 +128,17 @@ details[open] > summary {
 
 .global-controls label {
     margin-bottom: 0;
-    color: #f1f1f1; /* Asegurar que la etiqueta sea clara */
+    color: #f1f1f1;
 }
 
 .global-controls input,
 .global-controls select {
     margin-bottom: 0;
     max-width: 200px;
-    font-size: 0.9em; /* Texto ligeramente más pequeño */
+    font-size: 0.9em;
     
-    /* Estilos para que el input se vea bien en fondo oscuro */
     background-color: #555;
     color: #fff;
     border-color: #666;
-    padding: 0.25rem 0.5rem; /* Menos padding interno */
+    padding: 0.25rem 0.5rem;
 }
