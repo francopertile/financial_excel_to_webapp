@@ -1,15 +1,21 @@
 # 📊 Calculadora de Evaluación de Proyectos
 
-Una herramienta web interactiva diseñada para la evaluación financiera de proyectos de inversión, basada en los principios de cálculo del Valor Presente Neto (VPN), la Tasa Interna de Retorno (TIR) y la Tasa Interna de Retorno Modificada (TIRM). Este proyecto replica la lógica de ejemplos de cálculo encontrados en páginas como la 325 y 327 de un material de estudio financiero, facilitando la comprensión y experimentación con conceptos clave como proyectos mutuamente excluyentes y análisis de sensibilidad del VPN.
+Una completa suite de herramientas web interactivas para la evaluación financiera de proyectos de inversión. Este proyecto abarca desde cálculos fundamentales como el Valor Actual Neto (VAN) y la Tasa Interna de Retorno (TIR), hasta escenarios complejos como el análisis de cadenas de reemplazo, la búsqueda de TIRs múltiples y la simulación de la funcionalidad "Solver" para problemas de búsqueda de objetivos. Es una herramienta educativa y práctica diseñada para experimentar y comprender a fondo la matemática financiera.
 
 ## 🌟 Características
 
-* **Cálculo Dinámico de Métricas Financieras:** Calcula automáticamente el VAN, TIR y TIRM para proyectos individuales y para flujos de caja incrementales.
-* **Análisis de Proyectos Mutuamente Excluyentes (Pág. 325):** Permite comparar dos proyectos con diferentes tamaños de inversión inicial, calculando sus métricas y los flujos incrementales para una toma de decisiones informada.
-* **Análisis de Proyectos con Diferente Desarrollo Temporal (Pág. 327):** Facilita la comparación de proyectos con patrones de flujo de caja distintos a lo largo del tiempo, incluyendo una tabla de sensibilidad y la visualización de la Tasa de Fisher.
-* **Perfiles de VAN Interactivos:** Genera gráficos de perfiles de VAN en tiempo real, mostrando cómo el Valor Actual Neto de cada proyecto varía con diferentes costos de capital.
-* **Interfaz de Usuario Intuitiva:** Interfaz sencilla que permite modificar los flujos de caja y el costo de capital para observar los resultados instantáneamente.
-* **Fórmulas Detalladas:** Incluye una sección con las descripciones de las fórmulas financieras utilizadas para mayor claridad y referencia.
+* **Métricas Fundamentales:** Cálculo dinámico de VAN, TIR, y TIRM para cualquier serie de flujos de caja.
+* **Análisis Avanzado de la TIR:**
+    * Resolución de proyectos con **TIR Múltiples** a través de una estimación inicial variable.
+    * Cálculo de la **Tasa de Fisher** para determinar el punto de indiferencia entre proyectos, incluyendo casos con dos tasas de Fisher.
+* **Comparación de Proyectos de Diferente Duración:**
+    * Análisis automatizado por **Cadena de Reemplazos** para igualar la vida útil de los proyectos.
+    * Cálculo de la **Anualidad Equivalente (AE)** como criterio de decisión clave.
+* **Simulación de "Solver" para Búsqueda de Objetivos:** Incluye una herramienta para determinar la tarifa o ingreso anual necesario para alcanzar una TIR objetivo específica, mostrando el flujo de caja completo resultante.
+* **Visualización de Datos Interactiva:** Generación de gráficos de perfiles de VAN en tiempo real para analizar visualmente la sensibilidad de los proyectos al costo de capital, incluyendo perfiles no convencionales.
+* **Interfaz de Usuario Mejorada:**
+    * Controles globales para ajustar el costo de capital en todas las calculadoras simultáneamente.
+    * Selector de tema (claro/oscuro) para mayor comodidad visual.
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -37,9 +43,9 @@ Este proyecto es una aplicación web estática y no requiere de un servidor back
 
 └── js/
 
-├── app.js          # Lógica principal de la aplicación, manejo de eventos y actualización de UI.
+├── app.js          # Lógica principal, manejo de eventos y orquestación de todas las calculadoras.
 
-└── financial.js    # Implementación de las funciones de cálculo financiero (NPV, IRR, MIRR).
+└── financial.js    # Librería con funciones de cálculo (NPV, IRR, MIRR, PMT).
 
 
 ## 🤝 Contribuciones
