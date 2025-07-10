@@ -1,12 +1,15 @@
 /* css/style.css */
+
+/* Variables y configuración base */
 :root {
     --pico-font-size: 100%;
 }
 
 body {
-    padding-bottom: 5rem;
+    padding-bottom: 5rem; /* Espacio para los controles globales fijos */
 }
 
+/* Encabezado principal */
 header h1 {
     text-align: center;
     margin-top: 1.5rem;
@@ -17,13 +20,15 @@ header p {
     color: var(--pico-muted-color);
 }
 
+/* Contenedores de las calculadoras */
 article {
     margin-top: 2rem;
-    padding: 2rem;
+    padding: 1rem 2rem 2rem 2rem;
     border-radius: var(--pico-border-radius);
     box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05), 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05);
 }
 
+/* Estilos para tablas e inputs */
 table input[type="number"] {
     margin-bottom: 0;
     text-align: right;
@@ -36,10 +41,94 @@ table input[type="number"] {
     vertical-align: middle;
     background-color: var(--pico-muted-background-color);
 }
-/* css/style.css */
+
+.result-static {
+    color: var(--pico-muted-color);
+}
+
+/* Contenedores de los gráficos */
 .chart-container {
     position: relative;
     height: 40vh;
     width: 100%;
     margin-top: 2rem;
+}
+
+/* --- NUEVOS ESTILOS --- */
+
+/* Títulos para tablas dentro de un <article> */
+.table-title {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1em;
+    border-bottom: 1px solid var(--pico-muted-border-color);
+    padding-bottom: 0.25rem;
+}
+
+/* Hace que las tablas anchas se puedan desplazar */
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+/* Estilos para los botones de acción */
+article button {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+/* Estilos para las secciones colapsables de ejercicios adicionales */
+details {
+    margin-top: 2rem;
+    border: 1px solid var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
+}
+
+details > summary {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 0.75rem 1rem;
+    background-color: var(--pico-muted-background-color);
+    border-radius: var(--pico-border-radius);
+    transition: background-color 0.2s ease-in-out;
+}
+
+details > summary:hover {
+    background-color: var(--pico-muted-border-color);
+}
+
+details[open] > summary {
+     border-bottom-right-radius: 0;
+     border-bottom-left-radius: 0;
+}
+
+
+/* Controles globales fijos en la parte inferior */
+.global-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--pico-card-background-color);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--pico-border-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    z-index: 100;
+}
+
+.global-controls label {
+    margin-bottom: 0;
+}
+
+.global-controls input,
+.global-controls select {
+    margin-bottom: 0;
+    max-width: 200px;
 }
